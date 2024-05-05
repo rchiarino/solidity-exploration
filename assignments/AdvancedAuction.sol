@@ -2,31 +2,6 @@
 pragma solidity 0.8.25;
 
 // Entrega final Renzo Chiarino para el modulo 2
-
-
-/*
-    FUNCIONES:
-    [-] iniciarSubasta(uint256 valorInicial, uint256 fechaInicio, uint256 duracion): Inicia la subasta con las variables de estado especificadas.
-    [-] ofertar(bool secreta, uint256 monto): Permite a los participantes ofertar por el artículo. Las ofertas pueden ser ficticias o reales (usando msg.value).
-        Las ofertas secretas solo son visibles para el creador de la subasta hasta que finaliza la subasta.
-
-    [-] finalizarSubasta(): Finaliza la subasta manualmente (por el creador del contrato) o automáticamente al superar la fecha de finalización.
-    [-] mostrarGanador(): Muestra el ofertante ganador y el valor de la oferta.
-    [-] mostrarOfertas(): Muestra la lista de ofertantes y los montos ofrecidos.
-
-    DEPOSITOS:
-    [-] Se devuelve el depósito a los ofertantes que no ganaron, descontando una comisión del 2% para el gas.
-
-    EVENTOS:
-    [-] NuevaOferta(address ofertante, uint256 oferta, bool secreta): Se emite cuando se realiza una nueva oferta.
-    [-] SubastaFinalizada(address ganador, uint256 oferta): Se emite cuando finaliza la subasta.
-
-    EXTRA:
-    [-] Finalización automática: Se puede implementar un modificador que verifique si la fecha actual ha superado la fecha de finalización de la subasta y, en caso afirmativo, finalice la subasta automáticamente.
-
-
-*/
-
 contract AdvancedAuction {
     address contractOwner;
 
@@ -46,8 +21,8 @@ contract AdvancedAuction {
     uint256 public endDate; 
     bool public ended;
     uint256 public currentBid; // The current bid amount
-    uint256 public winningBid;
-    address public winner;
+    uint256 winningBid;
+    address winner;
 
     event NewBid(address bidder, uint256 amount, bool secret);
     event EndedAuction(address winner, uint256 amount);
